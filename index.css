@@ -1,8 +1,23 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #F3F4F6;
+    background-image: url('restaurantImage.jpg');
+    /* background-color: #F3F4F6; */
     color: #111827;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body::after {
+    content: "";
+    background: inherit;
+    position: fixed; /* use 'fixed' instead of 'absolute' */
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    filter: grayscale(0.2) blur(9px); /* adjust the value to change the intensity of blur */
+    z-index: -1;
 }
 
 h1 {
