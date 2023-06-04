@@ -5,7 +5,7 @@ let table = document.getElementById("table-el")
 function incrementCount() {
     count += 1
     counter.textContent = count
-    counter.style.color = "red"
+    counter.style.color = "green"
     setTimeout(function () { counter.style.color = "black" }, 1000)
 
 }
@@ -35,9 +35,48 @@ function saveRecord() {
 
     cell1.innerHTML = formattedDate
     cell2.innerHTML = count
-    cell3.innerHTML = '<input type="text" placeholder="Optional observations"/>'
+    let notesInput = document.createElement("input");
+    notesInput.setAttribute("type", "text");
+    notesInput.setAttribute("placeholder", "Optional observations");
+    cell3.appendChild(notesInput)
+
+
+    let data = {
+        timestamp: new Date().getTime(),
+        customerCount: count,
+        tableData: Array.from(table.rows).map(row => Array.from(row.cells).map(cell => cell.children.length ? cell.children[0].value : cell.innerText))
+    };
+    localStorage.setItem('FootfallData', JSON.stringify(data));
 
     count = 0
     counter.textContent = count
 
 }
+
+window.onload = function () {
+    let data = JSON.parse(localStorage.getItem('FootfallData'));
+    if (data) {
+        let now = new Date().getTime();
+        if (now - data.timestamp > 24 * 60 * 60 * 1000) {
+            localStorage.removeItem('FootfallData');
+        } else {
+            count = data.customerCount;
+            counter.textContent = count;
+            data.tableData.slice(1).forEach(rowData => {
+                let row = table.insertRow(-1);
+                rowData.forEach((cellData, index) => {
+                    let cell = row.insertCell();
+                    if (index === 2) {
+                        let input = document.createElement("input");
+                        input.setAttribute("type", "text");
+                        input.setAttribute("placeholder", "Optional observations");
+                        input.value = cellData;
+                        cell.appendChild(input);
+                    } else {
+                        cell.innerText = cellData;
+                    }
+                });
+            });
+        }
+    }
+};

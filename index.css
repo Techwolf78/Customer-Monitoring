@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     text-align: center;
     background-image: url('restaurantImage.jpg');
     /* background-color: #F3F4F6; */
-    color: #111827;
+    color: black;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -16,7 +18,7 @@ body::after {
     right: 0;
     top: 0;
     bottom: 0;
-    filter: grayscale(0.2) blur(9px); /* adjust the value to change the intensity of blur */
+    filter: grayscale(0.3) blur(9px); /* adjust the value to change the intensity of blur */
     z-index: -1;
 }
 
@@ -38,10 +40,20 @@ button {
     border: none;
     color: white;
     cursor: pointer;
-    overflow: hidden;
     position: relative;
-    transition: color .3s ease;
+    transition: all 0.3s ease;
     border-radius: 15px;
+    overflow: hidden;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 }
 
 button:before {
@@ -54,6 +66,7 @@ button:before {
     background: linear-gradient(120deg, transparent, rgba(255,255,255,.7), transparent);
     transform: translateX(-100%);
     transition: transform .6s ease;
+    z-index: 0;
 }
 
 button:hover:before {
@@ -62,6 +75,7 @@ button:hover:before {
 
 #increment-el {
     background-color: #1D4ED8;
+    transition: background-color 0.3s ease;
 }
 
 #increment-el:hover {
@@ -70,6 +84,7 @@ button:hover:before {
 
 #save-el {
     background-color: #DC2626;
+    transition: background-color 0.3s ease;
 }
 
 #save-el:hover {
