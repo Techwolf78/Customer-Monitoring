@@ -20,6 +20,13 @@ function getOrdinalSuffix(date) {
     }
 }
 
+function resetCount() {
+    count = 0
+    counter.textContent = count
+    counter.style.color = "red"
+    setTimeout(function () { counter.style.color = "black" }, 1000)
+}
+
 function saveRecord() {
     let date = new Date()
     let day = date.getDate()
