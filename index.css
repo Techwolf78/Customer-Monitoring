@@ -91,6 +91,15 @@ button:hover:before {
     background-color: #EF4444;
 }
 
+#refresh-el {
+    background-color: #3487f5;
+    transition: background-color 0.3s ease;
+}
+
+#refresh-el:hover {
+    background-color: #2321c0;
+}
+
 table {
     margin-top: 50px;
     margin-left: auto;
@@ -144,3 +153,5 @@ input[type="text"] {
         width: 100%;  /* width increased */
     }
 }
+
+
