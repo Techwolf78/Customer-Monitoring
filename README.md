@@ -19,6 +19,6 @@ A Restaurant foot traffic app built using JavaScript, HTML, and CSS.
    Open index.html in your browser to see the app in action.
 
 # Features
-   a) Count the number of customers entering and leaving the restaurant.
-   b) Display the current number of customers in real-time.
-   c) Reset the counter as needed.
+   a) Count the number of customers entering and leaving the restaurant.<br/>
+   b) Display the current number of customers in real-time.<br/>
+   c) Reset the counter as needed.<br/>
